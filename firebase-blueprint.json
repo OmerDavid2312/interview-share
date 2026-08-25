@@ -1,0 +1,49 @@
+{
+  "entities": {
+    "questions": {
+      "title": "Interview Questions",
+      "description": "Collection of shared interview questions from tech candidates",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "companyName": { "type": "string" },
+        "interviewStage": {
+          "type": "string",
+          "enum": [
+            "ראיון טכני",
+            "ראיון קוד",
+            "System Design",
+            "ראיון התנהגותי",
+            "משימת בית",
+            "אחר"
+          ]
+        },
+        "question": { "type": "string" },
+        "answer": { "type": "string" },
+        "authorName": { "type": "string" },
+        "jobLink": { "type": "string" },
+        "helpfulCount": { "type": "number" },
+        "createdAt": { "type": "number" }
+      },
+      "required": [
+        "companyName",
+        "interviewStage",
+        "question",
+        "answer",
+        "helpfulCount",
+        "createdAt"
+      ]
+    }
+  },
+  "firestore": {
+    "/questions/{questionId}": {
+      "schema": "questions",
+      "allow": {
+        "read": "true",
+        "create": "true",
+        "update": "true",
+        "delete": "false"
+      }
+    }
+  }
+}
