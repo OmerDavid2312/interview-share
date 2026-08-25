@@ -3,8 +3,11 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 import {defineConfig} from 'vite';
 
-export default defineConfig(() => {
+export default defineConfig(({command}) => {
   return {
+    // GitHub Pages serves project sites from /<repo>/, so assets need that prefix.
+    // Dev stays at / so localhost:3000 works unchanged.
+    base: command === 'build' ? '/interview-share/' : '/',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
